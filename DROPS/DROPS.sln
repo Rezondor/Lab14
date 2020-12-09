@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DROPS", "DROPS\DROPS.csproj", "{D18B9034-53CA-41BE-9BB4-BE94C227C237}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D18B9034-53CA-41BE-9BB4-BE94C227C237}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D18B9034-53CA-41BE-9BB4-BE94C227C237}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D18B9034-53CA-41BE-9BB4-BE94C227C237}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D18B9034-53CA-41BE-9BB4-BE94C227C237}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E1F88AEA-C0F2-499F-9F76-306C4AF0A526}
+	EndGlobalSection
+EndGlobal

@@ -32,11 +32,13 @@ namespace DROPS
             if (e.Button == MouseButtons.Left)
             {
                 DoDragDrop(textBox1.Text, DragDropEffects.Copy);
+                tb = true;
 
             }
-            if (e.Button == MouseButtons.Right) { 
-                DoDragDrop(textBox1, DragDropEffects.All); 
-            
+            if (e.Button == MouseButtons.Right) 
+            { 
+                DoDragDrop(textBox1.Text, DragDropEffects.Copy);
+                tb = true;
             }
         }
         private void listBox1_DragDrop(object sender, DragEventArgs e)
@@ -50,6 +52,7 @@ namespace DROPS
             if (e.Data.GetDataPresent(DataFormats.Text))
             {
                 e.Effect = DragDropEffects.Copy;
+                
             }
         }
         private void listBox1_MouseDown(object sender, MouseEventArgs e)
@@ -64,23 +67,47 @@ namespace DROPS
 
         private void listBox2_DragEnter(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.Text)) 
+            ListBox l = (ListBox)sender;
+
+
+            if (e.Data.GetDataPresent(DataFormats.Text) && ((l!=listBox1 && lb1)||(l != listBox2 && lb2)))
             {
                 e.Effect = DragDropEffects.Copy;
             }
+            else e.Effect = DragDropEffects.None;
+
         }
 
         private void listBox2_DragDrop(object sender, DragEventArgs e)
         {
-            listBox2.Items.Add(e.Data.GetData(DataFormats.Text));
-            listBox1.Items.Remove(e.Data.GetData(DataFormats.Text));
-            textBox1.Text = "";
+            ListBox l = (ListBox)sender;
+            
+            if (lb1 && l!=listBox1)
+            {
+
+                listBox1.Items.Remove(e.Data.GetData(DataFormats.Text));
+                l.Items.Add(e.Data.GetData(DataFormats.Text));
+                label4.Text = "Вы скопировали элемент из 1 списка во 2 список";
+                lb1 = false;
+            }
+            if (lb2 && l != listBox2)
+            {
+
+                listBox2.Items.Remove(e.Data.GetData(DataFormats.Text));
+                l.Items.Add(e.Data.GetData(DataFormats.Text));
+                label4.Text = "Вы скопировали элемент из 2 списка во 1 список";
+                lb2 = false;
+            }
+            
         }
         private void listBox2_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left && listBox2.SelectedIndex != -1)
-            {
-                DoDragDrop(listBox2.SelectedItem, DragDropEffects.Copy);
+            ListBox l = (ListBox)sender;
+            if (e.Button == MouseButtons.Left && l.SelectedIndex != -1)
+            {   if (l == listBox1) lb1 = true;
+                if (l == listBox2) lb2 = true; 
+            
+                DoDragDrop(l.SelectedItem, DragDropEffects.Copy);
 
             }
 
@@ -90,6 +117,7 @@ namespace DROPS
             if (e.Data.GetDataPresent(DataFormats.Text) && lb1) 
             {
                 e.Effect = DragDropEffects.Copy;
+                
             }
         }
 

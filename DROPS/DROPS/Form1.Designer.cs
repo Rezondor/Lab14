@@ -40,27 +40,30 @@ namespace DROPS
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
+            this.button1.AllowDrop = true;
             this.button1.Location = new System.Drawing.Point(12, 273);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(157, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "Считать из файла";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listBox2_MouseUp);
             // 
             // button2
             // 
+            this.button2.AllowDrop = true;
             this.button2.Location = new System.Drawing.Point(377, 273);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(155, 23);
             this.button2.TabIndex = 1;
             this.button2.Text = "Записать в файл";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listBox2_MouseUp);
             // 
             // listBox1
             // 
@@ -69,12 +72,13 @@ namespace DROPS
             this.listBox1.ItemHeight = 15;
             this.listBox1.Location = new System.Drawing.Point(12, 85);
             this.listBox1.Name = "listBox1";
-            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBox1.Size = new System.Drawing.Size(179, 169);
             this.listBox1.TabIndex = 2;
             this.listBox1.DragDrop += new System.Windows.Forms.DragEventHandler(this.listBox2_DragDrop);
             this.listBox1.DragEnter += new System.Windows.Forms.DragEventHandler(this.listBox2_DragEnter);
             this.listBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listBox2_MouseDown);
+            this.listBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listBox2_MouseUp);
             // 
             // listBox2
             // 
@@ -83,12 +87,13 @@ namespace DROPS
             this.listBox2.ItemHeight = 15;
             this.listBox2.Location = new System.Drawing.Point(357, 85);
             this.listBox2.Name = "listBox2";
-            this.listBox2.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.listBox2.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBox2.Size = new System.Drawing.Size(175, 169);
             this.listBox2.TabIndex = 3;
             this.listBox2.DragDrop += new System.Windows.Forms.DragEventHandler(this.listBox2_DragDrop);
             this.listBox2.DragEnter += new System.Windows.Forms.DragEventHandler(this.listBox2_DragEnter);
             this.listBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listBox2_MouseDown);
+            this.listBox2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listBox2_MouseUp);
             // 
             // textBox1
             // 
@@ -97,7 +102,11 @@ namespace DROPS
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(192, 23);
             this.textBox1.TabIndex = 4;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.DragDrop += new System.Windows.Forms.DragEventHandler(this.textBox1_DragDrop);
+            this.textBox1.DragEnter += new System.Windows.Forms.DragEventHandler(this.textBox1_DragEnter);
             this.textBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseDown);
+            this.textBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listBox2_MouseUp);
             // 
             // panel1
             // 
@@ -108,6 +117,7 @@ namespace DROPS
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(255, 38);
             this.panel1.TabIndex = 5;
+            this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listBox2_MouseUp);
             // 
             // label5
             // 
@@ -126,6 +136,7 @@ namespace DROPS
             this.label1.Size = new System.Drawing.Size(56, 15);
             this.label1.TabIndex = 6;
             this.label1.Text = "Красный";
+            this.label1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listBox2_MouseUp);
             // 
             // label2
             // 
@@ -135,6 +146,7 @@ namespace DROPS
             this.label2.Size = new System.Drawing.Size(43, 15);
             this.label2.TabIndex = 7;
             this.label2.Text = "Синий";
+            this.label2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listBox2_MouseUp);
             // 
             // label3
             // 
@@ -144,6 +156,7 @@ namespace DROPS
             this.label3.Size = new System.Drawing.Size(78, 15);
             this.label3.TabIndex = 8;
             this.label3.Text = "Новое слово";
+            this.label3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listBox2_MouseUp);
             // 
             // label4
             // 
@@ -153,22 +166,13 @@ namespace DROPS
             this.label4.Size = new System.Drawing.Size(0, 15);
             this.label4.TabIndex = 9;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(220, 117);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 15);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "label6";
-            // 
             // Form1
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuBar;
             this.ClientSize = new System.Drawing.Size(544, 401);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -184,6 +188,7 @@ namespace DROPS
             this.Load += new System.EventHandler(this.Form1_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listBox2_MouseUp);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -204,7 +209,6 @@ namespace DROPS
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
     }
 }
 
